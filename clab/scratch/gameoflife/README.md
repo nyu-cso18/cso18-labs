@@ -19,7 +19,8 @@ What about boundary conditions? We treat the borders of the 2D world as if they 
 * ((i-1)%n,(j+1)%n) topleft neighbor
 * ((i+1)%n,(j-1)%n) bottomright neighbor
 * ((i-1)%n,(j-1)%n) bottomleft neighbor
-Your executable file must be named gameoflife. It should take two arguments. The first argument is the name of a seed pattern file. The second argument is the number of ticks to run for the simulation. The seed pattern file contains one line per row of the universe. If the cell is "dead", its position is marked with the '.' character. If the cell is "live", the position is marked with the 'x' character. The seed file also effectively specifies the size of the universe to simulate.
+
+Your executable file must be named `gameoflife`. It should take two arguments. The first argument is the name of a seed pattern file. The second argument is the number of ticks to run for the simulation. The seed pattern file contains one line per row of the universe. If the cell is "dead", its position is marked with the '.' character. If the cell is "live", the position is marked with the 'x' character. The seed file also effectively specifies the size of the universe to simulate.
 
 For example, the contents of an example seed file `example_seed` are as follows:
 ```
