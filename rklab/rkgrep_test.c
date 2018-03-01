@@ -295,6 +295,11 @@ main(int argc, char **argv)
 
 	enum algo_type which_test = All;
 	char c;
+	if (argc >= 2) {
+	    srand(atoi(argv[1]));
+        } else {
+	    srand(time(NULL));
+        }
 	while ((c = getopt(argc, argv, "a:m:n:")) != -1) {
 		switch (c) {
 			case 'a':
