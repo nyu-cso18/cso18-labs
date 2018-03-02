@@ -295,7 +295,8 @@ main(int argc, char **argv)
 
 	enum algo_type which_test = All;
 	char c;
-	while ((c = getopt(argc, argv, "a:m:n:s")) != -1) {
+        unsigned int seed = 42;
+	while ((c = getopt(argc, argv, "a:m:n:s:r")) != -1) {
 		switch (c) {
 			case 'a':
 				if (strcmp(optarg, "naive") == 0) {
@@ -318,13 +319,18 @@ main(int argc, char **argv)
 				test_document_len = atoi(optarg);
 				break;
                         case 's':
-                                srand(time(NULL));
+                                seed = (unsigned) atoi(optarg);
+                                break;
+                        case 'r':
+                                seed = time(NULL);
                                 break;
 			default:
 				printf("rkgrep -a <test type>\n");
 				exit(1);
 		}
 	}
+        printf("Using seed %u\n", seed);
+        srand(seed);
 
 	printf("test_pattern_len=%d test_document_len=%d\n", test_pattern_len, test_document_len);
 	if (which_test == Naive || which_test == All) {
