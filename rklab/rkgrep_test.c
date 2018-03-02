@@ -69,7 +69,7 @@ generate_random_document(int len)
 long long 
 test_match_at_pos(int (*matchFunc)(const char *, const char *, int *), char *doc, int pos, int expected_n_matches, int pattern_len, bloom_filter *bf)
 {
-	char *p = (char *)malloc(pattern_len+1);
+	char *p = (char *) calloc(pattern_len+1, sizeof(char));
 	if (pos >= 0) {
 	       	strncpy(p, doc + pos, pattern_len);
 	} else {
@@ -295,7 +295,7 @@ main(int argc, char **argv)
 
 	enum algo_type which_test = All;
 	char c;
-	while ((c = getopt(argc, argv, "a:m:n:")) != -1) {
+	while ((c = getopt(argc, argv, "a:m:n:s")) != -1) {
 		switch (c) {
 			case 'a':
 				if (strcmp(optarg, "naive") == 0) {
@@ -317,6 +317,9 @@ main(int argc, char **argv)
 			case 'n':
 				test_document_len = atoi(optarg);
 				break;
+                        case 's':
+                                srand(time(NULL));
+                                break;
 			default:
 				printf("rkgrep -a <test type>\n");
 				exit(1);
