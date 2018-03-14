@@ -269,7 +269,7 @@ test_rk_bloom()
 	for (int i = 0; i < bloom_size; i++) {
 		bool b = bloom_bit_at_pos(bf, i);
 		bool b1 = bloom_bit_at_pos(bf1, i);
-		panic_cond(b == b1, "Bloom filter pos %d bit value is %d != %d (expected)\n", b, b1);
+		panic_cond(b == b1, "Bloom filter pos %d bit value is %d != %d (expected)\n", i, b, b1);
 	}
 
 	long long duration_sum = 0;
