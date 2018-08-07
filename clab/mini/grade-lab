@@ -39,8 +39,8 @@ matchtest(test_part4, "point_dist", 5, "part4: point_dist OK")
 def test_part5():
     r.run_test("build/part5")
 matchtest(test_part5, "list_insert", 5, "part5: list_insert OK")
-matchtest(test_part5, "list_end", 5, "part5: list_end OK")
-matchtest(test_part5, "list_size", 5, "part5: list_size OK")
+matchtest(test_part5, "list_end", 2, "part5: list_end OK")
+matchtest(test_part5, "list_size", 3, "part5: list_size OK")
 matchtest(test_part5, "list_find", 5, "part5: list_find OK")
 matchtest(test_part5, "list_remove", 5, "part5: list_remove OK")
 
@@ -55,6 +55,13 @@ matchtest(test_part6, "bit_at_index", 5, "part6: bit_at_index OK")
 def test_part7():
     r.run_test("build/part7")
 matchtest(test_part7, "preorder_traveral", 5, "part7: preorder_traversal OK") 
-matchtest(test_part7, "inorder_traversal", 5, "part7: inorder_traversal OK")
-matchtest(test_part7, "inorder_traversal_with_dup", 5, "part7: inorder_traversal with duplicates OK")
+matchtest(test_part7, "inorder_traversal", 3, "part7: inorder_traversal OK")
+matchtest(test_part7, "inorder_traversal_with_dup", 2, "part7: inorder_traversal with duplicates OK")
+
+@test(0, "split string [part8.c]")
+def test_part8():
+    r.run_test("build/part8")
+matchtest(test_part8, "easy_string_split", 5, "part8: easy_string_split OK") 
+matchtest(test_part8, "harder_string_split", 5, "part8: harder_string_split OK")
+
 run_tests()

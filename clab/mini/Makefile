@@ -9,10 +9,11 @@ SOBJS :=	$(STATIC)/part1_harness.o \
 		$(STATIC)/part4_harness.o \
 		$(STATIC)/part5_harness.o \
 		$(STATIC)/part6_harness.o \
-		$(STATIC)/part7_harness.o
+		$(STATIC)/part7_harness.o \
+		$(STATIC)/part8_harness.o
 
 CC     := gcc
-CFLAGS := -std=c99 
+CFLAGS := -std=gnu99 
 
 OBJS :=	$(BUILD)/part1 \
 	$(BUILD)/part2 \
@@ -20,7 +21,8 @@ OBJS :=	$(BUILD)/part1 \
 	$(BUILD)/part4 \
 	$(BUILD)/part5 \
 	$(BUILD)/part6 \
-	$(BUILD)/part7
+	$(BUILD)/part7 \
+	$(BUILD)/part8
 
 
 all: $(OBJS)
@@ -45,23 +47,5 @@ grade:
 	@./grade-lab
 
 TARBALL  := lab1.tar.gz
-
-# Most of the next two rules ripped from MIT JOS.
-handin-from-git:
-	@if ! git diff-files --quiet || ! git diff-index --quiet --cached HEAD; then \
-		git status; \
-		echo; \
-		echo "You have uncomitted changes.  Please commit or stash them."; \
-		false; \
-	fi
-	@if test -n "`git ls-files -o --exclude-standard`"; then \
-		git status; \
-		read -p "Untracked files will not be handed in.  Continue? [y/N] " r; \
-		test "$$r" = y; \
-	fi
-	tar -cf - `git ls-files` | gzip > $(TARBALL)
-
-handin: $(SOURCES)
-	tar czvf $(TARBALL) $(SOURCES)
 
 .PHONY: all always
